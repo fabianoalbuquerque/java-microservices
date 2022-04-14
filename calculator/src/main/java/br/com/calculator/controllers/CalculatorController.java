@@ -1,4 +1,4 @@
-package br.com.calculator;
+package br.com.calculator.controllers;
 
 import br.com.calculator.converters.NumberConverter;
 import br.com.calculator.exception.Error;
@@ -15,41 +15,31 @@ public class CalculatorController {
 
     @RequestMapping(value="/sum/{numberOne}/{numberTwo}", method = RequestMethod.GET)
     public Double sum(@PathVariable("numberOne") String numberOne, @PathVariable("numberTwo") String numberTwo) throws Exception {
-        if(!NumberConverter.isNumeric(numberOne) || !NumberConverter.isNumeric(numberTwo)) {
-            throw new Error("Please insert a numeric value");
-        }
+        NumberConverter.verify(numberOne, numberTwo);
         return math.sum(NumberConverter.convertDouble(numberOne), NumberConverter.convertDouble(numberTwo));
     }
 
     @RequestMapping(value="/subtraction/{numberOne}/{numberTwo}", method = RequestMethod.GET)
     public Double subtraction(@PathVariable("numberOne") String numberOne, @PathVariable("numberTwo") String numberTwo) throws Exception {
-        if(!NumberConverter.isNumeric(numberOne) || !NumberConverter.isNumeric(numberTwo)) {
-            throw new Error("Please insert a numeric value");
-        }
+        NumberConverter.verify(numberOne, numberTwo);
         return math.subtraction(NumberConverter.convertDouble(numberOne), NumberConverter.convertDouble(numberTwo));
     }
 
     @RequestMapping(value="/division/{numberOne}/{numberTwo}", method = RequestMethod.GET)
     public Double division(@PathVariable("numberOne") String numberOne, @PathVariable("numberTwo") String numberTwo) throws Exception {
-        if(!NumberConverter.isNumeric(numberOne) || !NumberConverter.isNumeric(numberTwo)) {
-            throw new Error("Please insert a numeric value");
-        }
+        NumberConverter.verify(numberOne, numberTwo);
         return math.division(NumberConverter.convertDouble(numberOne), NumberConverter.convertDouble(numberTwo));
     }
 
     @RequestMapping(value="/multiplication/{numberOne}/{numberTwo}", method = RequestMethod.GET)
     public Double multiplication(@PathVariable("numberOne") String numberOne, @PathVariable("numberTwo") String numberTwo) throws Exception {
-        if(!NumberConverter.isNumeric(numberOne) || !NumberConverter.isNumeric(numberTwo)) {
-            throw new Error("Please insert a numeric value");
-        }
+        NumberConverter.verify(numberOne, numberTwo);
         return math.multiplication(NumberConverter.convertDouble(numberOne), NumberConverter.convertDouble(numberTwo));
     }
 
     @RequestMapping(value="/mean/{numberOne}/{numberTwo}", method = RequestMethod.GET)
     public Double mean(@PathVariable("numberOne") String numberOne, @PathVariable("numberTwo") String numberTwo) throws Exception {
-        if(!NumberConverter.isNumeric(numberOne) || !NumberConverter.isNumeric(numberTwo)) {
-            throw new Error("Please insert a numeric value");
-        }
+        NumberConverter.verify(numberOne, numberTwo);
         return math.mean(NumberConverter.convertDouble(numberOne), NumberConverter.convertDouble(numberTwo));
     }
 }

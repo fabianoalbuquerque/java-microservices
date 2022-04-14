@@ -1,5 +1,7 @@
 package br.com.calculator.converters;
 
+import br.com.calculator.exception.Error;
+
 public class NumberConverter {
 
         public static Double convertDouble(String strNumber) {
@@ -17,6 +19,13 @@ public class NumberConverter {
             }
             String number = strNumber.replaceAll(",", ".");
             return number.matches("[-+]?[0-9]*\\.?[0-9]+");
+        }
+
+        public static boolean verify (String strNumberOne, String strNumberTwo) {
+            if(!NumberConverter.isNumeric(strNumberOne) || !NumberConverter.isNumeric(strNumberTwo)) {
+                throw new Error("Please insert a numeric value");
+            }
+            return true;
         }
 
 }
